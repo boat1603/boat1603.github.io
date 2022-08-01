@@ -2,7 +2,7 @@
   "name": "frontend-template-theme-selecter",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://boat1603.github.io",
+  "homepage": "https://boat1603.github.io/profiles",
   "dependencies": {
     "-": "^0.0.1",
     "@emotion/react": "^11.9.3",
