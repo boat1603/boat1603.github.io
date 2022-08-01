@@ -1,16 +1,27 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
-
-// material-ui
-import { styled, useTheme } from "@mui/material/styles";
-
 import Customization from "../Customization";
+import NavBar from "./NavBar";
+import Footer from "./Footer";
+
+import config from "./../../config";
 
 export default function MainLayout() {
+  const customization = useSelector((state) => state.customization);
+  
+
   return (
-    <div style={{ width: "100%", height: "100vh" }}>
-      <Outlet />
+    <div
+      className="page-background"
+      style={{
+        background: config.bgMap(customization.mode, customization.bg),
+      }}
+    >
+      <div className="page-layout">
+        <NavBar />
+        <Outlet />
+        <Footer />
+      </div>
       <Customization />
     </div>
   );

@@ -19,9 +19,9 @@ import { IconSettings } from "@tabler/icons";
 import PerfectScrollbar from "react-perfect-scrollbar";
 
 // project imports
-import SubCard from "./../../ui-component/cards/SubCard";
+import SubCard from "../../ui-component/cards/SubCard";
 import AnimateButton from "./../../ui-component/extended/AnimateButton";
-import { SET_BORDER_RADIUS, SET_THEME } from "./../../store/actions";
+import { SET_BORDER_RADIUS, SET_THEME, SET_BG } from "./../../store/actions";
 import { gridSpacing } from "./../../store/constant";
 
 import config from "./../../config";
@@ -62,24 +62,31 @@ const Customization = () => {
   const [webTheme, setWebTheme] = useState(customization.mode);
 
   useEffect(() => {
-    let newTheme;
-    switch (webTheme) {
-      case `dark`:
-        newTheme = "dark";
-        break;
-      case `light`:
-      default:
-        newTheme = "light";
-        break;
-    }
+    let newTheme = webTheme;
     dispatch({ type: SET_THEME, mode: newTheme });
     localStorage.setItem("theme", newTheme);
+    document.documentElement.setAttribute("data-theme", newTheme);
   }, [dispatch, webTheme]);
+
+  // state - bg
+  const [bg, setBg] = useState(customization.bg);
+
+  useEffect(() => {
+    let newBG = bg;
+    dispatch({ type: SET_BG, bg: newBG });
+    localStorage.setItem("background", newBG);
+  }, [dispatch, bg]);
+
   const reset_default_setting = () => {
     setBorderRadius(config.borderRadius);
     localStorage.setItem("borderRadius", config.borderRadius);
+
     setWebTheme(config.mode);
     localStorage.setItem("theme", config.mode);
+    document.documentElement.setAttribute("data-theme", config.mode);
+
+    setBg(config.bgColor);
+    localStorage.setItem("background", config.bgColor);
   };
   return (
     <>
@@ -121,69 +128,126 @@ const Customization = () => {
           },
         }}
       >
-        <PerfectScrollbar component="div">
+        <PerfectScrollbar component="div" className="bg-transition">
           <Grid container spacing={gridSpacing} sx={{ p: 3 }}>
             <Grid item xs={12}>
-              {/* border radius */}
-              <SubCard title="Theme">
-                <IconButton
-                  onClick={() => {
-                    if (webTheme === "dark") {
-                      setWebTheme("light");
-                      localStorage.setItem("theme", "light");
-                    } else {
-                      setWebTheme("dark");
-                      localStorage.setItem("theme", "dark");
-                    }
-                  }}
-                >
-                  {webTheme !== "dark" ? <DarkModeIcon /> : <Brightness7Icon />}
-                </IconButton>
-              </SubCard>
+              <SubCard
+                title={
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    <Typography gutterBottom variant="h4" component="div">
+                      Theme
+                    </Typography>
+                    <IconButton
+                      onClick={() => {
+                        if (webTheme === "dark") {
+                          setWebTheme("light");
+                          localStorage.setItem("theme", "light");
+                          document.documentElement.setAttribute(
+                            "data-theme",
+                            "light"
+                          );
+                        } else {
+                          setWebTheme("dark");
+                          localStorage.setItem("theme", "dark");
+                          document.documentElement.setAttribute(
+                            "data-theme",
+                            "dark"
+                          );
+                        }
+                      }}
+                    >
+                      {webTheme !== "dark" ? (
+                        <DarkModeIcon />
+                      ) : (
+                        <Brightness7Icon />
+                      )}
+                    </IconButton>
+                  </div>
+                }
+                content={
+                  <Grid container spacing={1}>
+                    {config.bgList.map((v, i) => {
+                      return (
+                        <div
+                          className="base-example-bg"
+                          onClick={() => {
+                            setBg(v);
+                            localStorage.setItem("background", v);
+                          }}
+                          style={
+                            customization.bg === v
+                              ? {
+                                  borderColor:
+                                    customization.mode === "dark"
+                                      ? "#42a5f5"
+                                      : "#90caf9",
+                                  borderStyle: "solid",
+                                }
+                              : null
+                          }
+                        >
+                          <div
+                            className="overlay-bg"
+                            style={{
+                              background: config.bgMap(customization.mode, v),
+                            }}
+                          ></div>
+                        </div>
+                      );
+                    })}
+                  </Grid>
+                }
+              />
             </Grid>
             <Grid item xs={12}>
-              {/* border radius */}
-              <SubCard title="Border Radius">
-                <Grid
-                  item
-                  xs={12}
-                  container
-                  spacing={2}
-                  alignItems="center"
-                  sx={{ mt: 2.5 }}
-                >
-                  <Grid item>
-                    <Typography variant="h6" color="text.secondary">
-                      4px
-                    </Typography>
+              <SubCard
+                title={
+                  <Typography gutterBottom variant="h4" component="div">
+                    Card Border Radius
+                  </Typography>
+                }
+                content={
+                  <Grid
+                    item
+                    xs={12}
+                    container
+                    spacing={2}
+                    alignItems="center"
+                    sx={{ mt: 2.5 }}
+                  >
+                    <Grid item>
+                      <Typography variant="h6" color="text.secondary">
+                        4px
+                      </Typography>
+                    </Grid>
+                    <Grid item xs>
+                      <Slider
+                        size="small"
+                        value={borderRadius}
+                        onChange={handleBorderRadius}
+                        getAriaValueText={valueText}
+                        valueLabelDisplay="on"
+                        aria-labelledby="discrete-slider-small-steps"
+                        marks
+                        step={2}
+                        min={4}
+                        max={24}
+                      />
+                    </Grid>
+                    <Grid item>
+                      <Typography variant="h6" color="text.secondary">
+                        24px
+                      </Typography>
+                    </Grid>
                   </Grid>
-                  <Grid item xs>
-                    <Slider
-                      size="small"
-                      value={borderRadius}
-                      onChange={handleBorderRadius}
-                      getAriaValueText={valueText}
-                      valueLabelDisplay="on"
-                      aria-labelledby="discrete-slider-small-steps"
-                      marks
-                      step={2}
-                      min={4}
-                      max={24}
-                      // color="secondary"
-                      // sx={{
-                      //   "& .MuiSlider-valueLabel": {
-                      //     // color: "secondary.light",
-                      //   },
-                      // }}
-                    />
-                  </Grid>
-                  <Grid item>
-                    <Typography variant="h6" color="text.secondary">
-                      24px
-                    </Typography>
-                  </Grid>
-                </Grid>
-              </SubCard>
+                }
+              />
             </Grid>
             <Grid item xs={12}>
               <Button onClick={reset_default_setting}>RESET</Button>
