@@ -7,6 +7,10 @@ import Loadable from "./../ui-component/Loadable";
 // dashboard routing
 const Homepage = Loadable(lazy(() => import("./../pages/HomePage")));
 const Settingpage = Loadable(lazy(() => import("./../pages/SettingPage")));
+const Downloadpage = Loadable(lazy(() => import("./../pages/DownloadPage")));
+const Certificatepage = Loadable(
+  lazy(() => import("./../pages/CertificatePage"))
+);
 
 // ==============================|| MAIN ROUTING ||============================== //
 
@@ -24,21 +28,25 @@ const MainRoutes = {
     },
     {
       path: "/certificates",
-      element: <div></div>,
+      element: <Certificatepage />,
     },
     {
       path: "/setting",
       element: <Settingpage />,
     },
     {
+      path: "/downloads",
+      element: <Downloadpage />,
+    },
+    {
       path: "/dashboard",
       element: <div></div>,
-      children: [
-        {
-          path: "default",
-          element: <div>Hello World</div>,
-        },
-      ],
+      // children: [
+      //   {
+      //     path: "default",
+      //     element: <div>Hello World</div>,
+      //   },
+      // ],
     },
   ],
 };

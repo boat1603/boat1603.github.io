@@ -67,155 +67,162 @@ export default function SettingPage(props) {
     localStorage.setItem("background", config.bgColor);
   };
   return (
-    <Grid
-      container
-      spacing={gridSpacing}
-      // xs={12}
-      sx={{ p: 4 }}
-      display="flex"
-      alignItems="center"
-      justifyContent="space-between"
-      marginLeft={"0px"}
-      width={"100%"}
-    >
-      <Grid container spacing={2} xs={24}>
-        <Grid item xs={12} md={6}>
-          <SubCard
-            title={
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  height: "50px",
-                }}
-              >
-                <Typography gutterBottom variant="h4" component="div">
-                  Theme
-                </Typography>
-                <IconButton
-                  onClick={() => {
-                    if (webTheme === "dark") {
-                      setWebTheme("light");
-                      localStorage.setItem("theme", "light");
-                      document.documentElement.setAttribute(
-                        "data-theme",
-                        "light"
-                      );
-                    } else {
-                      setWebTheme("dark");
-                      localStorage.setItem("theme", "dark");
-                      document.documentElement.setAttribute(
-                        "data-theme",
-                        "dark"
-                      );
-                    }
+    <div>
+      <div className="text-title">Settings</div>
+      <Grid
+        container
+        spacing={gridSpacing}
+        // xs={12}
+        sx={{ p: 4 }}
+        display="flex"
+        alignItems="center"
+        justifyContent="space-between"
+        marginLeft={"0px"}
+        width={"100%"}
+      >
+        <Grid container spacing={2} xs={24}>
+          <Grid item xs={12} md={6}>
+            <SubCard
+              title={
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    height: "50px",
                   }}
                 >
-                  {webTheme !== "dark" ? <DarkModeIcon /> : <Brightness7Icon />}
-                </IconButton>
-              </div>
-            }
-            content={
-              <Grid
-                container
-                spacing={1}
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-                height={"70%"}
-              >
-                {config.bgList.map((v, i) => {
-                  return (
-                    <div
-                      className="base-example-bg"
-                      onClick={() => {
-                        setBg(v);
-                        localStorage.setItem("background", v);
-                      }}
-                      style={
-                        customization.bg === v
-                          ? {
-                              borderColor:
-                                customization.mode === "dark"
-                                  ? "#42a5f5"
-                                  : "#90caf9",
-                              borderStyle: "solid",
-                            }
-                          : null
+                  <Typography gutterBottom variant="h4" component="div">
+                    Theme
+                  </Typography>
+                  <IconButton
+                    onClick={() => {
+                      if (webTheme === "dark") {
+                        setWebTheme("light");
+                        localStorage.setItem("theme", "light");
+                        document.documentElement.setAttribute(
+                          "data-theme",
+                          "light"
+                        );
+                      } else {
+                        setWebTheme("dark");
+                        localStorage.setItem("theme", "dark");
+                        document.documentElement.setAttribute(
+                          "data-theme",
+                          "dark"
+                        );
                       }
-                    >
+                    }}
+                  >
+                    {webTheme !== "dark" ? (
+                      <DarkModeIcon />
+                    ) : (
+                      <Brightness7Icon />
+                    )}
+                  </IconButton>
+                </div>
+              }
+              content={
+                <Grid
+                  container
+                  spacing={1}
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                  height={"70%"}
+                >
+                  {config.bgList.map((v, i) => {
+                    return (
                       <div
-                        className="overlay-bg"
-                        style={{
-                          background: config.bgMap(customization.mode, v),
+                        className="base-example-bg"
+                        onClick={() => {
+                          setBg(v);
+                          localStorage.setItem("background", v);
                         }}
-                      ></div>
-                    </div>
-                  );
-                })}
-              </Grid>
-            }
-          />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <SubCard
-            title={
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  height: "50px",
-                }}
-              >
-                <Typography gutterBottom variant="h4" component="div">
-                  Card Border Radius
-                </Typography>
-              </div>
-            }
-            content={
-              <Grid
-                item
-                xs={12}
-                container
-                spacing={2}
-                alignItems="center"
-                sx={{ mt: 2.5 }}
-              >
-                <Grid item>
-                  <Typography variant="h6" color="text.secondary">
-                    10px
+                        style={
+                          customization.bg === v
+                            ? {
+                                borderColor:
+                                  customization.mode === "dark"
+                                    ? "#42a5f5"
+                                    : "#90caf9",
+                                borderStyle: "solid",
+                              }
+                            : null
+                        }
+                      >
+                        <div
+                          className="overlay-bg"
+                          style={{
+                            background: config.bgMap(customization.mode, v),
+                          }}
+                        ></div>
+                      </div>
+                    );
+                  })}
+                </Grid>
+              }
+            />
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <SubCard
+              title={
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    height: "50px",
+                  }}
+                >
+                  <Typography gutterBottom variant="h4" component="div">
+                    Card Border Radius
                   </Typography>
+                </div>
+              }
+              content={
+                <Grid
+                  item
+                  xs={12}
+                  container
+                  spacing={2}
+                  alignItems="center"
+                  sx={{ mt: 2.5 }}
+                >
+                  <Grid item>
+                    <Typography variant="h6" color="text.secondary">
+                      10px
+                    </Typography>
+                  </Grid>
+                  <Grid item xs>
+                    <Slider
+                      size="small"
+                      value={borderRadius}
+                      onChange={handleBorderRadius}
+                      getAriaValueText={valueText}
+                      valueLabelDisplay="on"
+                      aria-labelledby="discrete-slider-small-steps"
+                      marks
+                      step={1}
+                      min={10}
+                      max={24}
+                    />
+                  </Grid>
+                  <Grid item>
+                    <Typography variant="h6" color="text.secondary">
+                      24px
+                    </Typography>
+                  </Grid>
                 </Grid>
-                <Grid item xs>
-                  <Slider
-                    size="small"
-                    value={borderRadius}
-                    onChange={handleBorderRadius}
-                    getAriaValueText={valueText}
-                    valueLabelDisplay="on"
-                    aria-labelledby="discrete-slider-small-steps"
-                    marks
-                    step={1}
-                    min={10}
-                    max={24}
-                  />
-                </Grid>
-                <Grid item>
-                  <Typography variant="h6" color="text.secondary">
-                    24px
-                  </Typography>
-                </Grid>
-              </Grid>
-            }
-          />
+              }
+            />
+          </Grid>
         </Grid>
-      </Grid>
 
-      <Grid item xs={12}>
-        <Button onClick={reset_default_setting}>RESET</Button>
+        <Grid item xs={12}>
+          <Button onClick={reset_default_setting}>RESET</Button>
+        </Grid>
       </Grid>
-    </Grid>
+    </div>
   );
 }

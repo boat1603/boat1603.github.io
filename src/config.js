@@ -37,8 +37,10 @@ const config = {
       Instagram: `linear-gradient(to right, #833ab4${opacity}, #fd1d1d${opacity}, #fcb045${opacity})`,
       // Magic: ``,
     };
+
     return color_map[name];
   },
+  magicNumber: 912,
 };
 
 export default config;

@@ -17,6 +17,7 @@ import FolderIcon from "@mui/icons-material/Folder";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import SettingsIcon from "@mui/icons-material/Settings";
+import DownloadIcon from "@mui/icons-material/Download";
 
 import PerfectScrollbar from "react-perfect-scrollbar";
 // import Footer from "./Footer";
@@ -24,6 +25,8 @@ import PerfectScrollbar from "react-perfect-scrollbar";
 import config from "./../../config";
 
 import { gridSpacing } from "./../../store/constant";
+
+import { getWindowSize } from "./../../utils";
 
 export default function MainLayout() {
   const customization = useSelector((state) => state.customization);
@@ -48,14 +51,16 @@ export default function MainLayout() {
 
   const MenuItems = () => {
     return (
-      <List>
+      <List style={{ width: "fit-content" }}>
         <ListItemButton
           style={{
             height: "50px",
-            borderRadius: windowSize.innerWidth > 768 ? "10px" : "5px",
+            borderRadius:
+              windowSize.innerWidth > config.magicNumber ? "10px" : "5px",
+            width: open ? "200px" : "58px",
           }}
           onClick={() => {
-            if (windowSize.innerWidth <= 768) {
+            if (windowSize.innerWidth <= config.magicNumber) {
               setOpen(false);
             }
             window.location.href = `${basename}/`;
@@ -64,36 +69,19 @@ export default function MainLayout() {
           <ListItemIcon>
             <PersonIcon />
           </ListItemIcon>
-          {(open || !windowSize.innerWidth > 768) && (
+          {(open || !windowSize.innerWidth > config.magicNumber) && (
             <ListItemText primary={open && "Profiles"} />
           )}
         </ListItemButton>
         <ListItemButton
           style={{
             height: "50px",
-            borderRadius: windowSize.innerWidth > 768 ? "10px" : "5px",
+            borderRadius:
+              windowSize.innerWidth > config.magicNumber ? "10px" : "5px",
+            width: open ? "200px" : "58px",
           }}
           onClick={() => {
-            if (windowSize.innerWidth <= 768) {
-              setOpen(false);
-            }
-            window.location.href = `${basename}/portfolio`;
-          }}
-        >
-          <ListItemIcon>
-            <FolderIcon />
-          </ListItemIcon>
-          {(open || !windowSize.innerWidth > 768) && (
-            <ListItemText primary="Portfolio" />
-          )}
-        </ListItemButton>
-        <ListItemButton
-          style={{
-            height: "50px",
-            borderRadius: windowSize.innerWidth > 768 ? "10px" : "5px",
-          }}
-          onClick={() => {
-            if (windowSize.innerWidth <= 768) {
+            if (windowSize.innerWidth <= config.magicNumber) {
               setOpen(false);
             }
             window.location.href = `${basename}/dashboard`;
@@ -102,17 +90,40 @@ export default function MainLayout() {
           <ListItemIcon>
             <DashboardIcon />
           </ListItemIcon>
-          {(open || !windowSize.innerWidth > 768) && (
+          {(open || !windowSize.innerWidth > config.magicNumber) && (
             <ListItemText primary="Dashboard" />
           )}
         </ListItemButton>
         <ListItemButton
           style={{
             height: "50px",
-            borderRadius: windowSize.innerWidth > 768 ? "10px" : "5px",
+            borderRadius:
+              windowSize.innerWidth > config.magicNumber ? "10px" : "5px",
+            width: open ? "200px" : "58px",
           }}
           onClick={() => {
-            if (windowSize.innerWidth <= 768) {
+            if (windowSize.innerWidth <= config.magicNumber) {
+              setOpen(false);
+            }
+            window.location.href = `${basename}/portfolio`;
+          }}
+        >
+          <ListItemIcon>
+            <FolderIcon />
+          </ListItemIcon>
+          {(open || !windowSize.innerWidth > config.magicNumber) && (
+            <ListItemText primary="Portfolio" />
+          )}
+        </ListItemButton>
+        <ListItemButton
+          style={{
+            height: "50px",
+            borderRadius:
+              windowSize.innerWidth > config.magicNumber ? "10px" : "5px",
+            width: open ? "200px" : "58px",
+          }}
+          onClick={() => {
+            if (windowSize.innerWidth <= config.magicNumber) {
               setOpen(false);
             }
             window.location.href = `${basename}/certificates`;
@@ -121,17 +132,40 @@ export default function MainLayout() {
           <ListItemIcon>
             <EmojiEventsIcon />
           </ListItemIcon>
-          {(open || !windowSize.innerWidth > 768) && (
+          {(open || !windowSize.innerWidth > config.magicNumber) && (
             <ListItemText primary="Certificates" />
           )}
         </ListItemButton>
         <ListItemButton
           style={{
             height: "50px",
-            borderRadius: windowSize.innerWidth > 768 ? "10px" : "5px",
+            borderRadius:
+              windowSize.innerWidth > config.magicNumber ? "10px" : "5px",
+            width: open ? "200px" : "58px",
           }}
           onClick={() => {
-            if (windowSize.innerWidth <= 768) {
+            if (windowSize.innerWidth <= config.magicNumber) {
+              setOpen(false);
+            }
+            window.location.href = `${basename}/downloads`;
+          }}
+        >
+          <ListItemIcon>
+            <DownloadIcon />
+          </ListItemIcon>
+          {(open || !windowSize.innerWidth > config.magicNumber) && (
+            <ListItemText primary="Download" />
+          )}
+        </ListItemButton>
+        <ListItemButton
+          style={{
+            height: "50px",
+            borderRadius:
+              windowSize.innerWidth > config.magicNumber ? "10px" : "5px",
+            width: open ? "200px" : "58px",
+          }}
+          onClick={() => {
+            if (windowSize.innerWidth <= config.magicNumber) {
               setOpen(false);
             }
             window.location.href = `${basename}/setting`;
@@ -140,7 +174,7 @@ export default function MainLayout() {
           <ListItemIcon>
             <SettingsIcon />
           </ListItemIcon>
-          {(open || !windowSize.innerWidth > 768) && (
+          {(open || !windowSize.innerWidth > config.magicNumber) && (
             <ListItemText primary="Settings" />
           )}
         </ListItemButton>
@@ -161,17 +195,17 @@ export default function MainLayout() {
           <div
             className="content-card"
             style={{
-              padding: "0px",
+              // padding: "-10px",
               display: "flex",
               // padding: "10px",
               // transition: "all 0.5s ease",
             }}
           >
-            {windowSize.innerWidth > 768 ? (
+            {windowSize.innerWidth > config.magicNumber ? (
               <div
                 style={{
-                  width: open ? "250px" : "78px",
-                  padding: "10px",
+                  width: open ? "200px" : "58px",
+                  // padding: "10px",
                   transition: "all 0.5s ease",
 
                   display: "flex",
@@ -204,6 +238,10 @@ export default function MainLayout() {
                 backgroundColor:
                   customization.mode === "dark" ? "#44444466" : "#dddddd66",
                 transition: "all 0.5s ease",
+                // padding: "20px",
+                padding: "20px",
+                paddingRight: "0px",
+                // width: "90%",
               }}
             >
               <PerfectScrollbar>
@@ -216,9 +254,4 @@ export default function MainLayout() {
       </div>
     </div>
   );
-}
-
-function getWindowSize() {
-  const { innerWidth, innerHeight } = window;
-  return { innerWidth, innerHeight };
 }
