@@ -35,13 +35,14 @@ function valueText(value) {
 
 // ==============================|| LIVE CUSTOMIZATION ||============================== //
 
-const Customization = () => {
+const Customization = (props) => {
+  let { open, setOpen } = props;
   const theme = useTheme();
   const dispatch = useDispatch();
   const customization = useSelector((state) => state.customization);
 
   // drawer on/off
-  const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
   const handleToggle = () => {
     setOpen(!open);
   };

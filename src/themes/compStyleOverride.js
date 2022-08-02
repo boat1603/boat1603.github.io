@@ -47,47 +47,47 @@ export default function componentStyleOverrides(theme) {
         },
       },
     },
-    MuiListItemButton: {
-      styleOverrides: {
-        root: {
-          color: theme.darkTextPrimary,
-          paddingTop: "10px",
-          paddingBottom: "10px",
-          "&.Mui-selected": {
-            color: theme.menuSelected,
-            backgroundColor: theme.menuSelectedBack,
-            "&:hover": {
-              backgroundColor: theme.menuSelectedBack,
-            },
-            "& .MuiListItemIcon-root": {
-              color: theme.menuSelected,
-            },
-          },
-          "&:hover": {
-            backgroundColor: theme.menuSelectedBack,
-            color: theme.menuSelected,
-            "& .MuiListItemIcon-root": {
-              color: theme.menuSelected,
-            },
-          },
-        },
-      },
-    },
-    MuiListItemIcon: {
-      styleOverrides: {
-        root: {
-          color: theme.darkTextPrimary,
-          minWidth: "36px",
-        },
-      },
-    },
-    MuiListItemText: {
-      styleOverrides: {
-        primary: {
-          color: theme.textDark,
-        },
-      },
-    },
+    // MuiListItemButton: {
+    //   styleOverrides: {
+    //     root: {
+    //       color: theme.darkTextPrimary,
+    //       paddingTop: "10px",
+    //       paddingBottom: "10px",
+    //       "&.Mui-selected": {
+    //         color: theme.menuSelected,
+    //         backgroundColor: theme.menuSelectedBack,
+    //         "&:hover": {
+    //           backgroundColor: theme.menuSelectedBack,
+    //         },
+    //         "& .MuiListItemIcon-root": {
+    //           color: theme.menuSelected,
+    //         },
+    //       },
+    //       "&:hover": {
+    //         backgroundColor: theme.menuSelectedBack,
+    //         color: theme.menuSelected,
+    //         "& .MuiListItemIcon-root": {
+    //           color: theme.menuSelected,
+    //         },
+    //       },
+    //     },
+    //   },
+    // },
+    // MuiListItemIcon: {
+    //   styleOverrides: {
+    //     root: {
+    //       color: theme.darkTextPrimary,
+    //       minWidth: "36px",
+    //     },
+    //   },
+    // },
+    // MuiListItemText: {
+    //   styleOverrides: {
+    //     primary: {
+    //       color: theme.textDark,
+    //     },
+    //   },
+    // },
     MuiInputBase: {
       styleOverrides: {
         input: {
