@@ -16,22 +16,18 @@ const MainRoutes = {
   children: [
     {
       path: "/",
-      // element: <DashboardDefault />,
       element: <Homepage />,
     },
     {
       path: "/portfolio",
-      // element: <DashboardDefault />,
       element: <div></div>,
     },
     {
       path: "/certificates",
-      // element: <DashboardDefault />,
       element: <div></div>,
     },
     {
       path: "/setting",
-      // element: <DashboardDefault />,
       element: <Settingpage />,
     },
     {
@@ -40,7 +36,6 @@ const MainRoutes = {
       children: [
         {
           path: "default",
-          // element: <DashboardDefault />,
           element: <div>Hello World</div>,
         },
       ],

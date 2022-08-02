@@ -18,7 +18,7 @@ export default function SubCard(props) {
           <Divider />
         </div>
       )}
-      {content && <div>{content}</div>}
+      {content && content}
     </div>
   );
 }

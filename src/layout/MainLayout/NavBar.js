@@ -24,7 +24,7 @@ export default function NavBar(props) {
         Peerawat's Profile
       </Typography> */}
       <div>
-        <h3>Peerawat's Profiles</h3>
+        <h3>Peerawat's github.io</h3>
       </div>
     </div>
   );
