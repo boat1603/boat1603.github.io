@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
 
-import Customization from "../Customization";
 import NavBar from "./NavBar";
 
 import {
@@ -17,10 +16,10 @@ import PersonIcon from "@mui/icons-material/Person";
 import FolderIcon from "@mui/icons-material/Folder";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
+import SettingsIcon from "@mui/icons-material/Settings";
 
 import PerfectScrollbar from "react-perfect-scrollbar";
 // import Footer from "./Footer";
-// import MiniDrawer from "./MenuDrawer";
 
 import config from "./../../config";
 
@@ -28,7 +27,6 @@ import { gridSpacing } from "./../../store/constant";
 
 export default function MainLayout() {
   const customization = useSelector((state) => state.customization);
-  const [customizationopen, setCustomizationopen] = useState(false);
   let [open, setOpen] = useState(false);
   let handleMenubar = () => {
     setOpen(!open);
@@ -37,14 +35,6 @@ export default function MainLayout() {
   const [windowSize, setWindowSize] = useState(getWindowSize());
   useEffect(() => {
     function handleWindowResize() {
-      // console.log(getWindowSize(), windowSize);
-      if (
-        customizationopen &&
-        getWindowSize().innerWidth <= 768 &&
-        windowSize.innerWidth > 768
-      ) {
-        setOpen(false);
-      }
       setWindowSize(getWindowSize());
     }
 
@@ -53,7 +43,7 @@ export default function MainLayout() {
     return () => {
       window.removeEventListener("resize", handleWindowResize);
     };
-  }, [setOpen, windowSize, customizationopen]);
+  }, []);
 
   const MenuItems = () => {
     return (
@@ -62,6 +52,9 @@ export default function MainLayout() {
           style={{
             height: "50px",
             borderRadius: windowSize.innerWidth > 768 ? "10px" : "5px",
+          }}
+          onClick={() => {
+            window.location.href = `${config.basename}`;
           }}
         >
           <ListItemIcon>
@@ -76,18 +69,24 @@ export default function MainLayout() {
             height: "50px",
             borderRadius: windowSize.innerWidth > 768 ? "10px" : "5px",
           }}
+          onClick={() => {
+            window.location.href = `${config.basename}/portfolio`;
+          }}
         >
           <ListItemIcon>
             <FolderIcon />
           </ListItemIcon>
           {(open || !windowSize.innerWidth > 768) && (
-            <ListItemText primary="Portfollio" />
+            <ListItemText primary="Portfolio" />
           )}
         </ListItemButton>
         <ListItemButton
           style={{
             height: "50px",
             borderRadius: windowSize.innerWidth > 768 ? "10px" : "5px",
+          }}
+          onClick={() => {
+            window.location.href = `${config.basename}/dashboard`;
           }}
         >
           <ListItemIcon>
@@ -102,12 +101,31 @@ export default function MainLayout() {
             height: "50px",
             borderRadius: windowSize.innerWidth > 768 ? "10px" : "5px",
           }}
+          onClick={() => {
+            window.location.href = `${config.basename}/certificates`;
+          }}
         >
           <ListItemIcon>
             <EmojiEventsIcon />
           </ListItemIcon>
           {(open || !windowSize.innerWidth > 768) && (
             <ListItemText primary="Certificates" />
+          )}
+        </ListItemButton>
+        <ListItemButton
+          style={{
+            height: "50px",
+            borderRadius: windowSize.innerWidth > 768 ? "10px" : "5px",
+          }}
+          onClick={() => {
+            window.location.href = `${config.basename}/setting`;
+          }}
+        >
+          <ListItemIcon>
+            <SettingsIcon />
+          </ListItemIcon>
+          {(open || !windowSize.innerWidth > 768) && (
+            <ListItemText primary="Settings" />
           )}
         </ListItemButton>
       </List>
@@ -130,7 +148,7 @@ export default function MainLayout() {
               padding: "0px",
               display: "flex",
               // padding: "10px",
-              transition: "all 0.5s ease",
+              // transition: "all 0.5s ease",
             }}
           >
             {windowSize.innerWidth > 768 ? (
@@ -167,9 +185,9 @@ export default function MainLayout() {
             <div
               className="content-card"
               style={{
-                transition: "width 2s",
                 backgroundColor:
                   customization.mode === "dark" ? "#44444466" : "#dddddd66",
+                transition: "all 0.5s ease",
               }}
             >
               <PerfectScrollbar>
@@ -180,7 +198,6 @@ export default function MainLayout() {
         </div>
         {/* <Footer /> */}
       </div>
-      <Customization open={customizationopen} setOpen={setCustomizationopen} />
     </div>
   );
 }

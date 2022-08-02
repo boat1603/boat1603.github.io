@@ -27,7 +27,7 @@
   padding: 20px;
 
   background-color: var(--bg-primary-color);
-  transition: all 0.5s ease;
+  /* transition: all 0.5s ease; */
 }
 
 .bg-transition {
@@ -42,7 +42,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  justify-content: flex-start;
 }
 
 .base-example-bg {
@@ -80,7 +81,7 @@
   border-radius: 10px;
 
   background-color: var(--card-color-transparent);
-  transition: all 0.5s ease;
+  transition: all 0.5s;
 }
 
 .page-footer {
@@ -114,12 +115,14 @@
   border-radius: 10px;
 
   background-color: var(--card-color-transparent);
-  transition: all 0.5s ease;
+  /* transition: all 0.5s; */
 }
 
 .sub-card {
   width: 100%;
+  height: 100%;
   padding: 20px;
+
   background-color: var(--card-color);
   /* transition: all 0.5s ease; */
 }
