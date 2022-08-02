@@ -31,6 +31,7 @@ export default function MainLayout() {
   let handleMenubar = () => {
     setOpen(!open);
   };
+  let basename = config.basename !== "/" ? config.basename : "/#";
 
   const [windowSize, setWindowSize] = useState(getWindowSize());
   useEffect(() => {
@@ -54,7 +55,10 @@ export default function MainLayout() {
             borderRadius: windowSize.innerWidth > 768 ? "10px" : "5px",
           }}
           onClick={() => {
-            window.location.href = `${config.basename}`;
+            if (windowSize.innerWidth <= 768) {
+              setOpen(false);
+            }
+            window.location.href = `${basename}/`;
           }}
         >
           <ListItemIcon>
@@ -70,7 +74,10 @@ export default function MainLayout() {
             borderRadius: windowSize.innerWidth > 768 ? "10px" : "5px",
           }}
           onClick={() => {
-            window.location.href = `${config.basename}/portfolio`;
+            if (windowSize.innerWidth <= 768) {
+              setOpen(false);
+            }
+            window.location.href = `${basename}/portfolio`;
           }}
         >
           <ListItemIcon>
@@ -86,7 +93,10 @@ export default function MainLayout() {
             borderRadius: windowSize.innerWidth > 768 ? "10px" : "5px",
           }}
           onClick={() => {
-            window.location.href = `${config.basename}/dashboard`;
+            if (windowSize.innerWidth <= 768) {
+              setOpen(false);
+            }
+            window.location.href = `${basename}/dashboard`;
           }}
         >
           <ListItemIcon>
@@ -102,7 +112,10 @@ export default function MainLayout() {
             borderRadius: windowSize.innerWidth > 768 ? "10px" : "5px",
           }}
           onClick={() => {
-            window.location.href = `${config.basename}/certificates`;
+            if (windowSize.innerWidth <= 768) {
+              setOpen(false);
+            }
+            window.location.href = `${basename}/certificates`;
           }}
         >
           <ListItemIcon>
@@ -118,7 +131,10 @@ export default function MainLayout() {
             borderRadius: windowSize.innerWidth > 768 ? "10px" : "5px",
           }}
           onClick={() => {
-            window.location.href = `${config.basename}/setting`;
+            if (windowSize.innerWidth <= 768) {
+              setOpen(false);
+            }
+            window.location.href = `${basename}/setting`;
           }}
         >
           <ListItemIcon>
