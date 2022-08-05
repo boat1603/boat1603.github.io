@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkfrontend_template_theme_selecter=self.webpackChunkfrontend_template_theme_selecter||[]).push([[846],{2846:function(e,n,t){t.r(n),t.d(n,{default:function(){return u}});var r=t(6871),c=t(184);function u(){var e=(0,r.s0)();return(0,c.jsx)("div",{children:(0,c.jsx)("div",{onClick:function(){e(-1)},children:"Back"})})}}}]);
+//# sourceMappingURL=846.0fd8d5cb.chunk.js.map

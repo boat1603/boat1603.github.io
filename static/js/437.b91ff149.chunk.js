@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkfrontend_template_theme_selecter=self.webpackChunkfrontend_template_theme_selecter||[]).push([[437],{3437:function(e,t,n){n.r(t),n.d(t,{default:function(){return s}});var r=n(184);function s(){return(0,r.jsx)("div",{style:{height:"100%"},children:(0,r.jsx)("div",{className:"text-title",children:"Online Courses"})})}}}]);
+//# sourceMappingURL=437.b91ff149.chunk.js.map
