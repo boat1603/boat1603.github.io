@@ -23,9 +23,7 @@ export default function NavBar(props) {
       {/* <Typography gutterBottom variant="h4" component="div">
         Peerawat's Profile
       </Typography> */}
-      <div>
-        <h3>Peerawat's github.io</h3>
-      </div>
+      <div className="nav-text">Peerawat's github.io</div>
     </div>
   );
 }

@@ -33,12 +33,26 @@ class Content extends React.Component {
       customization: props.customization,
     };
   }
+  // static propTypes = {
+  //   location: React.PropTypes.object.isRequired,
+  // };
+
   componentDidMount() {
     document.documentElement.setAttribute(
       "data-theme",
       this.state.customization.mode
     );
   }
+
+  // componentDidUpdate(prevProps) {
+  //   if (this.props.location !== prevProps.location) {
+  //     this.onRouteChanged();
+  //   }
+  // }
+
+  // onRouteChanged() {
+  //   console.log("ROUTE CHANGED");
+  // }
   render() {
     return (
       <motion.div

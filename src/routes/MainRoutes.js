@@ -8,8 +8,10 @@ import Loadable from "./../ui-component/Loadable";
 const Homepage = Loadable(lazy(() => import("./../pages/HomePage")));
 const Settingpage = Loadable(lazy(() => import("./../pages/SettingPage")));
 const Downloadpage = Loadable(lazy(() => import("./../pages/DownloadPage")));
-const Certificatepage = Loadable(
-  lazy(() => import("./../pages/CertificatePage"))
+const Coursespage = Loadable(lazy(() => import("./../pages/CoursesPage")));
+const Hackathonpage = Loadable(lazy(() => import("./../pages/HackathonPage")));
+const Pythonskillspage = Loadable(
+  lazy(() => import("../pages/content/Skills/Programming/PythonSkills"))
 );
 
 // ==============================|| MAIN ROUTING ||============================== //
@@ -27,8 +29,12 @@ const MainRoutes = {
       element: <div></div>,
     },
     {
-      path: "/certificates",
-      element: <Certificatepage />,
+      path: "/courses",
+      element: <Coursespage />,
+    },
+    {
+      path: "/hackathon",
+      element: <Hackathonpage />,
     },
     {
       path: "/setting",
@@ -41,12 +47,32 @@ const MainRoutes = {
     {
       path: "/dashboard",
       element: <div></div>,
-      // children: [
-      //   {
-      //     path: "default",
-      //     element: <div>Hello World</div>,
-      //   },
-      // ],
+    },
+    {
+      path: "/programming",
+      children: [
+        {
+          path: "",
+          element: <Pythonskillspage />,
+        },
+        {
+          path: "python",
+          element: <Pythonskillspage />,
+        },
+      ],
+    },
+    {
+      path: "/framework",
+      children: [
+        {
+          path: "",
+          element: <div></div>,
+        },
+        {
+          path: "Tensorflow",
+          element: <div>Hello World Tensorflow</div>,
+        },
+      ],
     },
   ],
 };

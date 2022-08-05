@@ -183,5 +183,17 @@ export default function componentStyleOverrides(theme) {
         },
       },
     },
+    MuiDialog: {
+      styleOverrides: {
+        root: {
+          "&.MuiDialogContent-root": {
+            padding: 2,
+          },
+          "&.MuiDialogActions-root": {
+            padding: 1,
+          },
+        },
+      },
+    },
   };
 }

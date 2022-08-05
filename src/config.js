@@ -40,7 +40,7 @@ const config = {
 
     return color_map[name];
   },
-  magicNumber: 912,
+  magicNumber: 768,
 };
 
 export default config;

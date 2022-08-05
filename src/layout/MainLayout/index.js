@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 
 import NavBar from "./NavBar";
+import Footer from "./Footer";
 
 import {
   Grid,
@@ -11,13 +12,23 @@ import {
   ListItemIcon,
   ListItemText,
   SwipeableDrawer,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  // Typography,
+  Button,
+  IconButton,
 } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
-import FolderIcon from "@mui/icons-material/Folder";
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
+// import FolderIcon from "@mui/icons-material/Folder";
+// import DashboardIcon from "@mui/icons-material/Dashboard";
+import CodeIcon from "@mui/icons-material/Code";
 import SettingsIcon from "@mui/icons-material/Settings";
 import DownloadIcon from "@mui/icons-material/Download";
+import CloseIcon from "@mui/icons-material/Close";
+
+import { GrCertificate } from "react-icons/gr";
 
 import PerfectScrollbar from "react-perfect-scrollbar";
 // import Footer from "./Footer";
@@ -27,6 +38,8 @@ import config from "./../../config";
 import { gridSpacing } from "./../../store/constant";
 
 import { getWindowSize } from "./../../utils";
+
+import WebsiteCond from "./../../pages/content/WebsiteCond";
 
 export default function MainLayout() {
   const customization = useSelector((state) => state.customization);
@@ -49,6 +62,18 @@ export default function MainLayout() {
     };
   }, []);
 
+  const location = useLocation();
+  useEffect(() => {
+    scrollTop();
+  }, [location]);
+  const ps = useRef();
+  function scrollTop() {
+    const curr = ps.current;
+    if (curr) {
+      curr.scrollTop = 0;
+    }
+  }
+
   const MenuItems = () => {
     return (
       <List style={{ width: "fit-content" }}>
@@ -70,10 +95,10 @@ export default function MainLayout() {
             <PersonIcon />
           </ListItemIcon>
           {(open || !windowSize.innerWidth > config.magicNumber) && (
-            <ListItemText primary={open && "Profiles"} />
+            <ListItemText primary={open && "Profile"} />
           )}
         </ListItemButton>
-        <ListItemButton
+        {/* <ListItemButton
           style={{
             height: "50px",
             borderRadius:
@@ -114,6 +139,29 @@ export default function MainLayout() {
           {(open || !windowSize.innerWidth > config.magicNumber) && (
             <ListItemText primary="Portfolio" />
           )}
+        </ListItemButton> */}
+        <ListItemButton
+          style={{
+            height: "50px",
+            borderRadius:
+              windowSize.innerWidth > config.magicNumber ? "10px" : "5px",
+            width: open ? "200px" : "58px",
+          }}
+          onClick={() => {
+            if (windowSize.innerWidth <= config.magicNumber) {
+              setOpen(false);
+            }
+            window.location.href = `${basename}/courses`;
+          }}
+        >
+          <ListItemIcon>
+            <GrCertificate size={24} className="icon" />
+
+            {/* <GrCertificate size={24} style={{ color: "white" }} /> */}
+          </ListItemIcon>
+          {(open || !windowSize.innerWidth > config.magicNumber) && (
+            <ListItemText primary="Online Courses" />
+          )}
         </ListItemButton>
         <ListItemButton
           style={{
@@ -126,14 +174,14 @@ export default function MainLayout() {
             if (windowSize.innerWidth <= config.magicNumber) {
               setOpen(false);
             }
-            window.location.href = `${basename}/certificates`;
+            window.location.href = `${basename}/hackathon`;
           }}
         >
           <ListItemIcon>
-            <EmojiEventsIcon />
+            <CodeIcon />
           </ListItemIcon>
           {(open || !windowSize.innerWidth > config.magicNumber) && (
-            <ListItemText primary="Certificates" />
+            <ListItemText primary="Hackathon" />
           )}
         </ListItemButton>
         <ListItemButton
@@ -182,6 +230,9 @@ export default function MainLayout() {
     );
   };
 
+  // Term & Cond
+  let [readcond, setReadcond] = useState(false);
+
   return (
     <div
       className="page-background"
@@ -189,9 +240,65 @@ export default function MainLayout() {
         background: config.bgMap(customization.mode, customization.bg),
       }}
     >
-      <div className="page-layout">
+      <Dialog
+        onClose={() => {
+          setReadcond(false);
+        }}
+        aria-labelledby="customized-dialog-title"
+        open={readcond}
+      >
+        <DialogTitle sx={{ m: 0, p: 2 }}>
+          <div className="text-title" style={{ padding: "0px", margin: "0px" }}>
+            Term and Condition
+          </div>
+
+          <IconButton
+            aria-label="close"
+            onClick={() => {
+              setReadcond(false);
+            }}
+            sx={{
+              position: "absolute",
+              right: 8,
+              top: 8,
+              color: (theme) => theme.palette.grey[500],
+            }}
+          >
+            <CloseIcon />
+          </IconButton>
+        </DialogTitle>
+        <DialogContent dividers>
+          <PerfectScrollbar style={{ maxHeight: "70vh" }}>
+            <WebsiteCond />
+          </PerfectScrollbar>
+        </DialogContent>
+        <DialogActions>
+          <Button
+            // autoFocus
+            onClick={() => {
+              setReadcond(false);
+            }}
+          >
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
+      <div
+        className="page-layout"
+        style={{
+          height: "95%",
+        }}
+      >
         <NavBar handleMenubar={handleMenubar} />
-        <div className="page-content">
+        <div
+          className="page-content"
+          style={
+            {
+              // height:
+              //   localStorage.getItem("TermnCond") !== "accept" ? "80%" : "83%",
+            }
+          }
+        >
           <div
             className="content-card"
             style={{
@@ -244,13 +351,18 @@ export default function MainLayout() {
                 // width: "90%",
               }}
             >
-              <PerfectScrollbar>
-                <Outlet />
+              <PerfectScrollbar containerRef={(el) => (ps.current = el)}>
+                <div style={{ paddingRight: "20px", height: "90%" }}>
+                  <Outlet />
+                </div>
               </PerfectScrollbar>
             </div>
           </div>
         </div>
-        {/* <Footer /> */}
+
+        {localStorage.getItem("TermnCond") !== "accept" && (
+          <Footer setReadcond={setReadcond} />
+        )}
       </div>
     </div>
   );

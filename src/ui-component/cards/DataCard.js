@@ -25,11 +25,20 @@ export default function DataCard(props) {
           : baseStyle
       }
     >
-      {icon && <div style={{ marginRight: "10px" }}>{icon}</div>}
-      <div>
-        {title && title}
-        {content && content}
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+        }}
+      >
+        {icon && <div style={{ marginRight: "10px" }}>{icon}</div>}
+        <div>
+          {title && title}
+          {content && content}
+        </div>
       </div>
+
       {ender && <div style={{ marginLeft: "10px" }}>{ender}</div>}
     </div>
   );

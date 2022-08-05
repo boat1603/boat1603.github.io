@@ -80,7 +80,7 @@ export default function SettingPage(props) {
         marginLeft={"0px"}
         width={"100%"}
       >
-        <Grid container spacing={2} xs={24}>
+        <Grid container spacing={2}>
           <Grid item xs={12} md={6}>
             <SubCard
               title={
