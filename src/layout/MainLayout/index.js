@@ -292,12 +292,12 @@ export default function MainLayout() {
         <NavBar handleMenubar={handleMenubar} />
         <div
           className="page-content"
-          style={
-            {
-              // height:
-              //   localStorage.getItem("TermnCond") !== "accept" ? "80%" : "83%",
-            }
-          }
+          // style={{
+          //   height:
+          //     document.documentElement.getAttribute("TermnCond") !== "accept"
+          //       ? "80%"
+          //       : "83%",
+          // }}
         >
           <div
             className="content-card"
@@ -359,10 +359,10 @@ export default function MainLayout() {
             </div>
           </div>
         </div>
-
-        {localStorage.getItem("TermnCond") !== "accept" && (
+        <Footer setReadcond={setReadcond} />
+        {/* {document.documentElement.getAttribute("TermnCond") !== "accept" && (
           <Footer setReadcond={setReadcond} />
-        )}
+        )} */}
       </div>
     </div>
   );

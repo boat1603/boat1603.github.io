@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+// import { Button } from "@mui/material";
 export default function Footer(props) {
   let { setReadcond } = props;
   return (
@@ -19,16 +19,16 @@ export default function Footer(props) {
           Term and Condition
         </b>
       </div>
-      <Button
+      {/* <Button
         style={{ marginLeft: "8px" }}
         onClick={() => {
-          // localStorage.setItem("TermnCond","accept")
+          localStorage.setItem("TermnCond", "accept");
         }}
       >
         <p className="text-content" style={{ fontSize: "10px" }}>
           Accept
         </p>
-      </Button>
+      </Button> */}
     </div>
   );
 }
