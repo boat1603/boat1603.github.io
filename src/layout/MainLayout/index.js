@@ -21,7 +21,7 @@ import {
   IconButton,
 } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
-// import FolderIcon from "@mui/icons-material/Folder";
+import FolderIcon from "@mui/icons-material/Folder";
 // import DashboardIcon from "@mui/icons-material/Dashboard";
 import CodeIcon from "@mui/icons-material/Code";
 import SettingsIcon from "@mui/icons-material/Settings";
@@ -118,7 +118,7 @@ export default function MainLayout() {
           {(open || !windowSize.innerWidth > config.magicNumber) && (
             <ListItemText primary="Dashboard" />
           )}
-        </ListItemButton>
+        </ListItemButton> */}
         <ListItemButton
           style={{
             height: "50px",
@@ -139,7 +139,7 @@ export default function MainLayout() {
           {(open || !windowSize.innerWidth > config.magicNumber) && (
             <ListItemText primary="Portfolio" />
           )}
-        </ListItemButton> */}
+        </ListItemButton>
         <ListItemButton
           style={{
             height: "50px",

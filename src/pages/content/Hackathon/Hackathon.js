@@ -10,6 +10,18 @@ export default function Hackathon() {
       </div>
       <div style={{ display: "flex", justifyContent: "center" }}>
         <img
+          src="/hackathon/SuperAIFinalHackathonImg.jpg"
+          alt=""
+          style={{
+            width: "100%",
+            borderRadius: customization.borderRadius,
+            maxWidth: "700px",
+            margin: "5px",
+          }}
+        />
+      </div>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <img
           src="/hackathon/SuperAIFinalHackathon.jpg"
           alt=""
           style={{

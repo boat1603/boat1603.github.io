@@ -8,6 +8,7 @@ import Loadable from "./../ui-component/Loadable";
 const Homepage = Loadable(lazy(() => import("./../pages/HomePage")));
 const Settingpage = Loadable(lazy(() => import("./../pages/SettingPage")));
 const Downloadpage = Loadable(lazy(() => import("./../pages/DownloadPage")));
+const Portfoliopage = Loadable(lazy(() => import("./../pages/PortfolioPage")));
 const Coursespage = Loadable(lazy(() => import("./../pages/CoursesPage")));
 const Hackathonpage = Loadable(lazy(() => import("./../pages/HackathonPage")));
 const Pythonskillspage = Loadable(
@@ -26,7 +27,7 @@ const MainRoutes = {
     },
     {
       path: "/portfolio",
-      element: <div></div>,
+      element: <Portfoliopage />,
     },
     {
       path: "/courses",
