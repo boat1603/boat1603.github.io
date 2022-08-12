@@ -1,5 +1,7 @@
 import { Grid } from "@mui/material";
 
+import frameworks from "./../frameworks";
+
 import DataCard from "./../../../ui-component/cards/DataCard";
 
 export default function ProgrammingSkills() {
@@ -59,7 +61,7 @@ export default function ProgrammingSkills() {
         />
       </Grid>
       <div className="text-subtitle" style={{ marginTop: "20px" }}>
-        Experienced on Tools{" & "}FrameWork
+        Experienced on Tools{" & "}FrameWorks
       </div>
       <Grid
         container
@@ -68,123 +70,28 @@ export default function ProgrammingSkills() {
         alignItems="center"
         justifyContent="center"
       >
-        <img
-          src="/icons/pytorch-icon.png"
-          height="50px"
-          alt=""
-          style={{ margin: "5px", borderRadius: "5px" }}
-        />
-        <img
-          src="/icons/tensorflow-icon.png"
-          height="50px"
-          alt=""
-          style={{ margin: "5px", borderRadius: "5px" }}
-        />
-        <img
-          src="/icons/huggingface-icon.JPG"
-          height="50px"
-          alt=""
-          style={{ margin: "5px", borderRadius: "5px" }}
-        />
-        <img
-          src="/icons/fastapi-icon.png"
-          height="50px"
-          alt=""
-          style={{ margin: "5px", borderRadius: "5px" }}
-        />
-        <img
-          src="/icons/node-js-icon.png"
-          height="50px"
-          alt=""
-          style={{
-            margin: "5px",
-            borderRadius: "5px",
-            backgroundColor: "#ffffff",
-            padding: "4px",
-          }}
-        />
-        <img
-          src="/icons/react-icon.png"
-          height="50px"
-          alt=""
-          style={{ margin: "5px", borderRadius: "5px" }}
-        />
-        <img
-          src="/icons/flutter-icon.png"
-          height="50px"
-          alt=""
-          style={{ margin: "5px", borderRadius: "5px" }}
-        />
-        <img
-          src="/icons/sqlite-icon.png"
-          height="50px"
-          alt=""
-          style={{
-            margin: "5px",
-            borderRadius: "5px",
-            backgroundColor: "#ffffff",
-          }}
-        />
-        <img
-          src="/icons/posgres-icon.jpeg"
-          height="50px"
-          alt=""
-          style={{ margin: "5px", borderRadius: "5px" }}
-        />
-        <img
-          src="/icons/mongo-icon.png"
-          height="50px"
-          alt=""
-          style={{ margin: "5px", borderRadius: "5px" }}
-        />
-        <img
-          src="/icons/mosquitto-icon.png"
-          height="50px"
-          alt=""
-          style={{ margin: "5px", borderRadius: "5px" }}
-        />
-        <img
-          src="/icons/arduino-icon.png"
-          height="50px"
-          alt=""
-          style={{
-            margin: "5px",
-            borderRadius: "5px",
-            paddingTop: "5px",
-            paddingBottom: "5px",
-          }}
-        />
-        <img
-          src="/icons/nvidia-jetson-icon.png"
-          height="50px"
-          alt=""
-          style={{ margin: "5px", borderRadius: "5px" }}
-        />
-        <img
-          src="/icons/docker-icon.png"
-          height="50px"
-          alt=""
-          style={{ margin: "5px", borderRadius: "5px" }}
-        />
-        <img
-          src="/icons/gcp-icon.png"
-          height="50px"
-          alt=""
-          style={{ margin: "5px", borderRadius: "5px" }}
-        />
-        <img
-          src="/icons/aws-icon.jpg"
-          height="50px"
-          alt=""
-          style={{ margin: "5px", borderRadius: "5px" }}
-        />
-        <img
-          src="/icons/huawei-icon.jpg"
-          height="50px"
-          alt=""
-          style={{ margin: "5px", borderRadius: "5px" }}
-        />
-
+        {[
+          "pytorch",
+          "tensorflow",
+          "huggingface",
+          "fastapi",
+          "nodejs",
+          "react",
+          "flutter",
+          "sqlite",
+          "posgres",
+          "mongodb",
+          "mosquitto",
+          "arduino",
+          "jetson",
+          "git",
+          "docker",
+          "gcp",
+          "aws",
+          "huawei",
+        ].map((v, i) => {
+          return frameworks[v];
+        })}
         {/* </div> */}
       </Grid>
     </div>

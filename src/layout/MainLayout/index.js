@@ -151,16 +151,14 @@ export default function MainLayout() {
             if (windowSize.innerWidth <= config.magicNumber) {
               setOpen(false);
             }
-            window.location.href = `${basename}/courses`;
+            window.location.href = `${basename}/hackathon`;
           }}
         >
           <ListItemIcon>
-            <GrCertificate size={24} className="icon" />
-
-            {/* <GrCertificate size={24} style={{ color: "white" }} /> */}
+            <CodeIcon />
           </ListItemIcon>
           {(open || !windowSize.innerWidth > config.magicNumber) && (
-            <ListItemText primary="Online Courses" />
+            <ListItemText primary="Hackathon" />
           )}
         </ListItemButton>
         <ListItemButton
@@ -174,16 +172,19 @@ export default function MainLayout() {
             if (windowSize.innerWidth <= config.magicNumber) {
               setOpen(false);
             }
-            window.location.href = `${basename}/hackathon`;
+            window.location.href = `${basename}/courses`;
           }}
         >
           <ListItemIcon>
-            <CodeIcon />
+            <GrCertificate size={24} className="icon" />
+
+            {/* <GrCertificate size={24} style={{ color: "white" }} /> */}
           </ListItemIcon>
           {(open || !windowSize.innerWidth > config.magicNumber) && (
-            <ListItemText primary="Hackathon" />
+            <ListItemText primary="Online Courses" />
           )}
         </ListItemButton>
+
         <ListItemButton
           style={{
             height: "50px",

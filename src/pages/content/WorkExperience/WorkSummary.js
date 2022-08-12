@@ -1,5 +1,7 @@
 import DataCard from "./../../../ui-component/cards/DataCard";
+import config from "./../../../config";
 export default function WorkSummary() {
+  let basename = config.basename !== "/" ? config.basename : "/#";
   return (
     <div>
       <div className="text-title" style={{ marginTop: "20px" }}>
@@ -23,7 +25,10 @@ export default function WorkSummary() {
           </div>
         }
         content={<p className="text-content">April 2022 - Present</p>}
-        style={{ margin: "5px" }}
+        style={{ margin: "5px", cursor: "pointer" }}
+        onClick={() => {
+          window.location.href = `${basename}/work/synapes`;
+        }}
       />
       <DataCard
         icon={
@@ -43,7 +48,10 @@ export default function WorkSummary() {
           </div>
         }
         content={<p className="text-content">December 2021 - Present</p>}
-        style={{ margin: "5px" }}
+        style={{ margin: "5px", cursor: "pointer" }}
+        onClick={() => {
+          window.location.href = `${basename}/work/aipen`;
+        }}
       />
       <DataCard
         icon={
@@ -70,7 +78,10 @@ export default function WorkSummary() {
           </div>
         }
         content={<p className="text-content">November 2021 - Present</p>}
-        style={{ margin: "5px" }}
+        style={{ margin: "5px", cursor: "pointer" }}
+        onClick={() => {
+          window.location.href = `${basename}/work/bse`;
+        }}
       />
       <DataCard
         icon={
@@ -90,7 +101,10 @@ export default function WorkSummary() {
           </div>
         }
         content={<p className="text-content">July 2021 - December 2021</p>}
-        style={{ margin: "5px" }}
+        style={{ margin: "5px", cursor: "pointer" }}
+        onClick={() => {
+          window.location.href = `${basename}/work/aipen`;
+        }}
       />
       <DataCard
         icon={
@@ -117,7 +131,10 @@ export default function WorkSummary() {
           </div>
         }
         content={<p className="text-content">May 2021 - October 2021</p>}
-        style={{ margin: "5px" }}
+        style={{ margin: "5px", cursor: "pointer" }}
+        onClick={() => {
+          window.location.href = `${basename}/work/bse`;
+        }}
       />
       <DataCard
         icon={
@@ -137,7 +154,10 @@ export default function WorkSummary() {
           </div>
         }
         content={<p className="text-content">June 2020 - July 2020</p>}
-        style={{ margin: "5px" }}
+        style={{ margin: "5px", cursor: "pointer" }}
+        onClick={() => {
+          window.location.href = `${basename}/work/mfec`;
+        }}
       />
       <DataCard
         icon={

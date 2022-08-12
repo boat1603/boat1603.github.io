@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 // material-ui
 export default function DataCard(props) {
-  const { icon, title, content, ender, style } = props;
+  const { icon, title, content, ender, style, onClick } = props;
   const customization = useSelector((state) => state.customization);
   let baseStyle = {
     borderRadius: customization.borderRadius,
@@ -24,6 +24,7 @@ export default function DataCard(props) {
             }
           : baseStyle
       }
+      onClick={onClick}
     >
       <div
         style={{

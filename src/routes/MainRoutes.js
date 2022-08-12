@@ -14,6 +14,14 @@ const Hackathonpage = Loadable(lazy(() => import("./../pages/HackathonPage")));
 const Pythonskillspage = Loadable(
   lazy(() => import("../pages/content/Skills/Programming/PythonSkills"))
 );
+const Synapespage = Loadable(
+  lazy(() => import("./../pages/workPages/SynapesPage"))
+);
+const Aipenpage = Loadable(
+  lazy(() => import("./../pages/workPages/AipenPage"))
+);
+const Bsepage = Loadable(lazy(() => import("./../pages/workPages/BsePage")));
+const Mfecpage = Loadable(lazy(() => import("./../pages/workPages/MfecPage")));
 
 // ==============================|| MAIN ROUTING ||============================== //
 
@@ -48,6 +56,31 @@ const MainRoutes = {
     {
       path: "/dashboard",
       element: <div></div>,
+    },
+    {
+      path: "/work",
+      children: [
+        // {
+        //   path: "",
+        //   element: <Pythonskillspage />,
+        // },
+        {
+          path: "synapes",
+          element: <Synapespage />,
+        },
+        {
+          path: "aipen",
+          element: <Aipenpage />,
+        },
+        {
+          path: "bse",
+          element: <Bsepage />,
+        },
+        {
+          path: "mfec",
+          element: <Mfecpage />,
+        },
+      ],
     },
     {
       path: "/programming",

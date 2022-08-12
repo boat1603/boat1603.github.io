@@ -155,6 +155,20 @@ export default function PersonalInformation() {
           />
         </Grid>
       </Grid>
+      <div className="text-title">Vision</div>
+      <DataCard
+        content={
+          <div style={{ textAlign: "center" }}>
+            " I want to be a Technology Man who use Computer Technology to make
+            a business value "
+          </div>
+        }
+        style={{
+          justifyContent: "center",
+          padding: "16px",
+          borderRadius: "8px",
+        }}
+      />
     </div>
   );
 }
