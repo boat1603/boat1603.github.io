@@ -9,7 +9,7 @@ import DataCard from "../../../ui-component/cards/DataCard";
 
 import BadgeIcon from "@mui/icons-material/Badge";
 import EmailIcon from "@mui/icons-material/Email";
-import CallIcon from "@mui/icons-material/Call";
+// import CallIcon from "@mui/icons-material/Call";
 import LanguageIcon from "@mui/icons-material/Language";
 import DriveEtaIcon from "@mui/icons-material/DriveEta";
 import MilitaryTechIcon from "@mui/icons-material/MilitaryTech";
@@ -103,27 +103,13 @@ export default function PersonalInformation() {
             // style={{ maxWidth: "320px" }}
             style={{ marginBottom: "8px" }}
           />
-          <DataCard
-            icon={<CallIcon />}
-            title={<p className="text-content-title">Phone Number</p>}
-            content={
-              <p className="text-content">
-                <a href="tel:+66-81-999-9230">(+66) 81 999 9230</a>
-              </p>
-            }
-            // style={{ maxWidth: "320px" }}
-            style={{ marginBottom: "8px" }}
-          />
+
           <DataCard
             icon={<CakeIcon />}
-            title={<p className="text-content-title">Date of Birth</p>}
+            title={<p className="text-content-title">Age</p>}
             content={
               <p className="text-content">
-                16 March 1999 ({Math.floor(Difference_In_Months / 12)} year{" "}
-                {new Date(Date.now()).getDate() < 16
-                  ? (Difference_In_Months - 1 + 12) % 12
-                  : Difference_In_Months % 12}{" "}
-                month)
+                {Math.floor(Difference_In_Months / 12)} year
               </p>
             }
             // style={{ maxWidth: "320px" }}
