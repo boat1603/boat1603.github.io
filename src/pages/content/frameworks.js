@@ -270,6 +270,14 @@ let frameworks = {
       style={{ margin: "5px", borderRadius: "5px" }}
     />
   ),
+  slurm: (
+    <img
+      src="/icons/slurm-icon.jpg"
+      height="50px"
+      alt=""
+      style={{ margin: "5px", borderRadius: "5px" }}
+    />
+  ),
 };
 export default frameworks;
 // ["awsamplify","awsautoscaling","awsec2","awsecr","awsiotcore","awslambda","awsloadbalancer","awsrds","awsroute53","awss3"];

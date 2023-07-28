@@ -10,6 +10,36 @@ export default function WorkSummary() {
       <DataCard
         icon={
           <img
+            src="/images/looloo-logo.png"
+            width="75px"
+            alt=""
+            style={{
+              borderRadius: "8px",
+              backgroundColor: "#ffffff",
+              paddingLeft: "3px",
+              paddingRight: "3px",
+              paddingTop: "15px",
+              paddingBottom: "15px",
+            }}
+          />
+        }
+        title={
+          <div>
+            <p className="text-content-title">
+              Machine Learning Engineer @ Looloo Technology Co., Ltd.
+            </p>
+            <p className="text-content-title">Bangkok, Thailand</p>
+          </div>
+        }
+        content={<p className="text-content">October 2022 - Present</p>}
+        style={{ margin: "5px", cursor: "pointer" }}
+        onClick={() => {
+          window.location.href = `${basename}/work/looloo`;
+        }}
+      />
+      <DataCard
+        icon={
+          <img
             src="/images/synapes-logo.jpg"
             width="75px"
             alt=""
@@ -24,7 +54,7 @@ export default function WorkSummary() {
             <p className="text-content-title">Chiangmai, Thailand</p>
           </div>
         }
-        content={<p className="text-content">April 2022 - Present</p>}
+        content={<p className="text-content">April 2022 - October 2022</p>}
         style={{ margin: "5px", cursor: "pointer" }}
         onClick={() => {
           window.location.href = `${basename}/work/synapes`;
@@ -47,7 +77,7 @@ export default function WorkSummary() {
             <p className="text-content-title">Bangkok, Thailand</p>
           </div>
         }
-        content={<p className="text-content">December 2021 - Present</p>}
+        content={<p className="text-content">December 2021 - September 2022</p>}
         style={{ margin: "5px", cursor: "pointer" }}
         onClick={() => {
           window.location.href = `${basename}/work/aipen`;
@@ -77,7 +107,7 @@ export default function WorkSummary() {
             <p className="text-content-title">Bangkok, Thailand</p>
           </div>
         }
-        content={<p className="text-content">November 2021 - Present</p>}
+        content={<p className="text-content">November 2021 - October 2022</p>}
         style={{ margin: "5px", cursor: "pointer" }}
         onClick={() => {
           window.location.href = `${basename}/work/bse`;

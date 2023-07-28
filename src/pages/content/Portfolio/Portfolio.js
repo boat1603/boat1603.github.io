@@ -6,7 +6,16 @@ export default function Portfolio() {
   const customization = useSelector((state) => state.customization);
   let port_data = [
     {
-      title: "BP EYE (Startup in AIEAT Incubation) (2022 - Present)",
+      title: "Volunteer at OpenThaiGPT (2023 - Present)",
+      content: (
+        <div>
+          <div style={{ display: "flex", justifyContent: "center" }}></div>
+        </div>
+      ),
+      framework: ["python", "pytorch", "huggingface", "slurm"],
+    },
+    {
+      title: "BP EYE (Startup in AIEAT Incubation) (2022)",
       content: (
         <div>
           <div style={{ display: "flex", justifyContent: "center" }}>

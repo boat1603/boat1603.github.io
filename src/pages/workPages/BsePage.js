@@ -6,7 +6,7 @@ export default function BsePage() {
   let projects = [
     {
       title:
-        "BSE IoT Freelance Website Administrator (November 2021 - Present)",
+        "BSE IoT Freelance Website Administrator (November 2021 - October 2022)",
       content: (
         <div>
           <div style={{ display: "flex", justifyContent: "center" }}>

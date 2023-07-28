@@ -5,7 +5,7 @@ export default function SynapesPage() {
   const customization = useSelector((state) => state.customization);
   let projects = [
     {
-      title: "AI Engineer (April 2022 - Present)",
+      title: "AI Engineer (April 2022 - October 2022)",
       content: (
         <div>
           <div style={{ display: "flex", justifyContent: "center" }}>
@@ -45,11 +45,11 @@ export default function SynapesPage() {
             />
           </div>
           <Typography gutterBottom>
-            &emsp;Develop computer vision model to count and classify human
+            &emsp;- Develop computer vision model to count and classify human
             gender and vehicle type from Video.
           </Typography>{" "}
           <Typography gutterBottom>
-            &emsp;Develop computer vision model to detect anomaly event from
+            &emsp;- Develop computer vision model to detect anomaly event from
             Video such as falling people and brawling people, etc.
           </Typography>
         </div>

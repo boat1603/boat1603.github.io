@@ -7,15 +7,15 @@ export default function AipenPage() {
   //   const customization = useSelector((state) => state.customization);
   let projects = [
     {
-      title: "Freelance AI Consultant in AI Project (April 2022 - Present)",
+      title: "Freelance AI Consultant in AI Project (April 2022 - September 2022)",
       content: (
         <div>
           <Typography gutterBottom>
-            &emsp;Consult POC in AI (Computer Vision Models) and Recommendation
+            &emsp;- Consult POC in AI (Computer Vision Models) and Recommendation
             system projects.
           </Typography>
           <Typography gutterBottom>
-            &emsp;Consult about infrastructure to use in AI project.
+            &emsp;- Consult about infrastructure to use in AI project.
           </Typography>
         </div>
       ),
@@ -24,8 +24,9 @@ export default function AipenPage() {
         "Data Analytics",
         "Recommendation System",
         "Image Classification",
+        "Image Searching",
       ],
-      framework: ["python", "pytorch", "fastapi"],
+      framework: ["python", "pytorch", "fastapi", "huggingface"],
     },
     {
       title:

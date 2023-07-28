@@ -145,7 +145,7 @@ export default function PersonalInformation() {
       <DataCard
         content={
           <div style={{ textAlign: "center" }}>
-            " I want to be a Technology Man who use Computer Technology to make
+            " I want to be a technology man who use computer technology to make
             a business value "
           </div>
         }

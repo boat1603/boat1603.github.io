@@ -86,6 +86,7 @@ export default function ProgrammingSkills() {
           "jetson",
           "git",
           "docker",
+          "slurm",
           "gcp",
           "aws",
           "huawei",
