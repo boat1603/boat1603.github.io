@@ -9,8 +9,8 @@ export default function LoolooPage() {
       content: (
         <div>
           <Typography gutterBottom>
-            &emsp;- Develop Semi-Structure OCR model to understand accountant
-            document.
+            &emsp;- Develop Semi-Structured OCR model to understand accountant
+            documents.
           </Typography>
           <Typography gutterBottom>
             &emsp;- Develop deep learning based document understanding using

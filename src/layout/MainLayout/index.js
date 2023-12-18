@@ -26,6 +26,7 @@ import FolderIcon from "@mui/icons-material/Folder";
 import CodeIcon from "@mui/icons-material/Code";
 import SettingsIcon from "@mui/icons-material/Settings";
 import DownloadIcon from "@mui/icons-material/Download";
+import HourglassTopIcon from '@mui/icons-material/HourglassTop';
 import CloseIcon from "@mui/icons-material/Close";
 
 import { GrCertificate } from "react-icons/gr";
@@ -182,6 +183,29 @@ export default function MainLayout() {
           </ListItemIcon>
           {(open || !windowSize.innerWidth > config.magicNumber) && (
             <ListItemText primary="Online Courses" />
+          )}
+        </ListItemButton>
+        <ListItemButton
+          style={{
+            height: "50px",
+            borderRadius:
+              windowSize.innerWidth > config.magicNumber ? "10px" : "5px",
+            width: open ? "200px" : "58px",
+          }}
+          onClick={() => {
+            if (windowSize.innerWidth <= config.magicNumber) {
+              setOpen(false);
+            }
+            window.location.href = `${basename}/timeline`;
+          }}
+        >
+          <ListItemIcon>
+            <HourglassTopIcon size={24} className="icon" />
+
+            {/* <HourglassTopIcon size={24} style={{ color: "white" }} /> */}
+          </ListItemIcon>
+          {(open || !windowSize.innerWidth > config.magicNumber) && (
+            <ListItemText primary="Timeline" />
           )}
         </ListItemButton>
 

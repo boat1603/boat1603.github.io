@@ -11,6 +11,7 @@ const Downloadpage = Loadable(lazy(() => import("./../pages/DownloadPage")));
 const Portfoliopage = Loadable(lazy(() => import("./../pages/PortfolioPage")));
 const Coursespage = Loadable(lazy(() => import("./../pages/CoursesPage")));
 const Hackathonpage = Loadable(lazy(() => import("./../pages/HackathonPage")));
+const TimelinePage = Loadable(lazy(() => import("./../pages/TimelinePage")));
 const Pythonskillspage = Loadable(
   lazy(() => import("../pages/content/Skills/Programming/PythonSkills"))
 );
@@ -47,6 +48,10 @@ const MainRoutes = {
     {
       path: "/hackathon",
       element: <Hackathonpage />,
+    },
+    {
+      path: "/timeline",
+      element: <TimelinePage />,
     },
     {
       path: "/setting",
