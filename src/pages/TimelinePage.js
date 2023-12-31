@@ -64,7 +64,7 @@ export default function TimelinePage() {
             lighting.
           </Typography>
           <Typography gutterBottom>
-            &emsp;- Implement training setup config including, optimeizer
+            &emsp;- Implement training setup config including, optimizer
             configuration, deepspeed, multi GPU / multi node training, gradient
             accumulation, etc. using hydra config.
           </Typography>
@@ -81,7 +81,7 @@ export default function TimelinePage() {
             usage, and Slurm tricks.
           </Typography>
           <Typography gutterBottom>
-            &emsp;- OpenThaiGPT's product owner in multi-modal team to research
+            &emsp;- OpenThaiGPT's product owner in a multi-modal team to research
             capabilities and opportunities to develop an open-source Thai
             multimodal large language model and then create tasks to assign to
             other volunteers.

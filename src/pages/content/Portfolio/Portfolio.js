@@ -146,7 +146,7 @@ export default function Portfolio() {
           </div>
         </div>
       ),
-      url: "https://drive.google.com/file/d/18hGspDkXQ7qAkRARCJSrMOvCnC4QKkau/view",
+      // url: "https://drive.google.com/file/d/18hGspDkXQ7qAkRARCJSrMOvCnC4QKkau/view",
       framework: ["python", "tensorflow"],
     },
     {
@@ -167,7 +167,7 @@ export default function Portfolio() {
           </div>
         </div>
       ),
-      url: "https://drive.google.com/file/d/19jIOmzbVkeA_v9FAzuoF0gfPR1d1aeCQ/view",
+      // url: "https://drive.google.com/file/d/19jIOmzbVkeA_v9FAzuoF0gfPR1d1aeCQ/view",
       framework: ["python"],
     },
     {
@@ -188,7 +188,7 @@ export default function Portfolio() {
           </div>
         </div>
       ),
-      url: "https://drive.google.com/file/d/1xkSJiJ0eoY01h4PphNnVpuRuBK6IJL4f/view",
+      // url: "https://drive.google.com/file/d/1xkSJiJ0eoY01h4PphNnVpuRuBK6IJL4f/view",
       framework: ["python", "matlab"],
     },
     {
@@ -209,7 +209,7 @@ export default function Portfolio() {
           </div>
         </div>
       ),
-      url: "https://drive.google.com/file/d/1FHcG5o9wiUNV7xmbmlbeV75agMcor2iO/view",
+      // url: "https://drive.google.com/file/d/1FHcG5o9wiUNV7xmbmlbeV75agMcor2iO/view",
       framework: ["python"],
     },
     {
