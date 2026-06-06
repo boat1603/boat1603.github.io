@@ -1,17 +1,15 @@
 import { lazy } from "react";
+import { Navigate } from "react-router-dom";
 
-// project imports
 import MainLayout from "./../layout/MainLayout";
 import Loadable from "./../ui-component/Loadable";
 
-// dashboard routing
 const Homepage = Loadable(lazy(() => import("./../pages/HomePage")));
+const ExperiencePage = Loadable(lazy(() => import("./../pages/ExperiencePage")));
+const ProjectsPage = Loadable(lazy(() => import("./../pages/ProjectsPage")));
 const Settingpage = Loadable(lazy(() => import("./../pages/SettingPage")));
-const Downloadpage = Loadable(lazy(() => import("./../pages/DownloadPage")));
-const Portfoliopage = Loadable(lazy(() => import("./../pages/PortfolioPage")));
 const Coursespage = Loadable(lazy(() => import("./../pages/CoursesPage")));
 const Hackathonpage = Loadable(lazy(() => import("./../pages/HackathonPage")));
-const TimelinePage = Loadable(lazy(() => import("./../pages/TimelinePage")));
 const Pythonskillspage = Loadable(
   lazy(() => import("../pages/content/Skills/Programming/PythonSkills"))
 );
@@ -27,8 +25,6 @@ const Aipenpage = Loadable(
 const Bsepage = Loadable(lazy(() => import("./../pages/workPages/BsePage")));
 const Mfecpage = Loadable(lazy(() => import("./../pages/workPages/MfecPage")));
 
-// ==============================|| MAIN ROUTING ||============================== //
-
 const MainRoutes = {
   path: "/",
   element: <MainLayout />,
@@ -38,8 +34,28 @@ const MainRoutes = {
       element: <Homepage />,
     },
     {
+      path: "/experience",
+      element: <ExperiencePage />,
+    },
+    {
+      path: "/projects",
+      element: <ProjectsPage />,
+    },
+    {
+      path: "/resume",
+      element: <Navigate replace to="/" />,
+    },
+    {
       path: "/portfolio",
-      element: <Portfoliopage />,
+      element: <Navigate replace to="/projects" />,
+    },
+    {
+      path: "/timeline",
+      element: <Navigate replace to="/experience" />,
+    },
+    {
+      path: "/downloads",
+      element: <Navigate replace to="/" />,
     },
     {
       path: "/courses",
@@ -50,28 +66,16 @@ const MainRoutes = {
       element: <Hackathonpage />,
     },
     {
-      path: "/timeline",
-      element: <TimelinePage />,
-    },
-    {
       path: "/setting",
       element: <Settingpage />,
     },
     {
-      path: "/downloads",
-      element: <Downloadpage />,
-    },
-    {
       path: "/dashboard",
-      element: <div></div>,
+      element: <Navigate replace to="/" />,
     },
     {
       path: "/work",
       children: [
-        // {
-        //   path: "",
-        //   element: <Pythonskillspage />,
-        // },
         {
           path: "looloo",
           element: <Looloopage />,
@@ -108,17 +112,8 @@ const MainRoutes = {
       ],
     },
     {
-      path: "/framework",
-      children: [
-        {
-          path: "",
-          element: <div></div>,
-        },
-        {
-          path: "Tensorflow",
-          element: <div>Hello World Tensorflow</div>,
-        },
-      ],
+      path: "*",
+      element: <Navigate replace to="/" />,
     },
   ],
 };

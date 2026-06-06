@@ -18,7 +18,7 @@ export default function DownloadPage() {
           <IconButton
             onClick={() => {
               window.open(
-                "https://drive.google.com/file/d/1OU_hKhZrO5pIjnshParP10VE906Eesqv/view"
+                "https://drive.google.com/file/d/1OU_hKhZrO5pIjnshParP10VE906Eesqv/view?usp=sharing"
               );
             }}
           >

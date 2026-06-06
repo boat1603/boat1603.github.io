@@ -3,7 +3,7 @@ const config = {
   // like '/berry-material-react/react/default'
   basename: "/",
   defaultPath: "/#",
-  borderRadius: 18,
+  borderRadius: 12,
   mode: "dark",
   bgColor: "normal",
   bgList: [

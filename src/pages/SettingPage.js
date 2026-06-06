@@ -1,228 +1,143 @@
-import { useState, useEffect } from "react";
+import Brightness7Icon from "@mui/icons-material/Brightness7";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
+import RestartAltIcon from "@mui/icons-material/RestartAlt";
+import { Button, IconButton, Slider } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 
-// material-ui
-import { Button, Grid, IconButton, Slider, Typography } from "@mui/material";
+import config from "../config";
+import { SET_BG, SET_BORDER_RADIUS, SET_THEME } from "../store/actions";
 
-// project imports
-import SubCard from "../ui-component/cards/SubCard";
-import { SET_BORDER_RADIUS, SET_THEME, SET_BG } from "./../store/actions";
-import { gridSpacing } from "../store/constant";
-
-import config from "./../config";
-import DarkModeIcon from "@mui/icons-material/DarkMode";
-import Brightness7Icon from "@mui/icons-material/Brightness7";
-
-// concat 'px'
 function valueText(value) {
   return `${value}px`;
 }
 
-// ==============================|| LIVE CUSTOMIZATION ||============================== //
-
-export default function SettingPage(props) {
+export default function SettingPage() {
   const dispatch = useDispatch();
   const customization = useSelector((state) => state.customization);
+  const isDark = customization.mode === "dark";
 
-  // state - border radius
-  const [borderRadius, setBorderRadius] = useState(customization.borderRadius);
-  const handleBorderRadius = (event, newValue) => {
-    setBorderRadius(newValue);
-    localStorage.setItem("borderRadius", newValue);
+  const setTheme = (mode) => {
+    dispatch({ type: SET_THEME, mode });
+    localStorage.setItem("theme", mode);
+    document.documentElement.setAttribute("data-theme", mode);
   };
 
-  useEffect(() => {
+  const setBackground = (bg) => {
+    dispatch({ type: SET_BG, bg });
+    localStorage.setItem("background", bg);
+  };
+
+  const setBorderRadius = (borderRadius) => {
     dispatch({ type: SET_BORDER_RADIUS, borderRadius });
     localStorage.setItem("borderRadius", borderRadius);
-  }, [dispatch, borderRadius]);
-
-  // state - webtheme
-  const [webTheme, setWebTheme] = useState(customization.mode);
-
-  useEffect(() => {
-    let newTheme = webTheme;
-    dispatch({ type: SET_THEME, mode: newTheme });
-    localStorage.setItem("theme", newTheme);
-    document.documentElement.setAttribute("data-theme", newTheme);
-  }, [dispatch, webTheme]);
-
-  // state - bg
-  const [bg, setBg] = useState(customization.bg);
-
-  useEffect(() => {
-    let newBG = bg;
-    dispatch({ type: SET_BG, bg: newBG });
-    localStorage.setItem("background", newBG);
-  }, [dispatch, bg]);
-
-  const reset_default_setting = () => {
-    setBorderRadius(config.borderRadius);
-    localStorage.setItem("borderRadius", config.borderRadius);
-
-    setWebTheme(config.mode);
-    localStorage.setItem("theme", config.mode);
-    document.documentElement.setAttribute("data-theme", config.mode);
-
-    setBg(config.bgColor);
-    localStorage.setItem("background", config.bgColor);
   };
-  return (
-    <div>
-      <div className="text-title">Settings</div>
-      <Grid
-        container
-        spacing={gridSpacing}
-        // xs={12}
-        sx={{ p: 4 }}
-        display="flex"
-        alignItems="center"
-        justifyContent="space-between"
-        marginLeft={"0px"}
-        width={"100%"}
-      >
-        <Grid container spacing={2}>
-          <Grid item xs={12} md={6}>
-            <SubCard
-              title={
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    height: "50px",
-                  }}
-                >
-                  <Typography gutterBottom variant="h4" component="div">
-                    Theme
-                  </Typography>
-                  <IconButton
-                    onClick={() => {
-                      if (webTheme === "dark") {
-                        setWebTheme("light");
-                        localStorage.setItem("theme", "light");
-                        document.documentElement.setAttribute(
-                          "data-theme",
-                          "light"
-                        );
-                      } else {
-                        setWebTheme("dark");
-                        localStorage.setItem("theme", "dark");
-                        document.documentElement.setAttribute(
-                          "data-theme",
-                          "dark"
-                        );
-                      }
-                    }}
-                  >
-                    {webTheme !== "dark" ? (
-                      <DarkModeIcon />
-                    ) : (
-                      <Brightness7Icon />
-                    )}
-                  </IconButton>
-                </div>
-              }
-              content={
-                <Grid
-                  container
-                  spacing={1}
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="center"
-                  height={"70%"}
-                >
-                  {config.bgList.map((v, i) => {
-                    return (
-                      <div
-                        className="base-example-bg"
-                        onClick={() => {
-                          setBg(v);
-                          localStorage.setItem("background", v);
-                        }}
-                        style={
-                          customization.bg === v
-                            ? {
-                                borderColor:
-                                  customization.mode === "dark"
-                                    ? "#42a5f5"
-                                    : "#90caf9",
-                                borderStyle: "solid",
-                              }
-                            : null
-                        }
-                      >
-                        <div
-                          className="overlay-bg"
-                          style={{
-                            background: config.bgMap(customization.mode, v),
-                          }}
-                        ></div>
-                      </div>
-                    );
-                  })}
-                </Grid>
-              }
-            />
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <SubCard
-              title={
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    height: "50px",
-                  }}
-                >
-                  <Typography gutterBottom variant="h4" component="div">
-                    Card Border Radius
-                  </Typography>
-                </div>
-              }
-              content={
-                <Grid
-                  item
-                  xs={12}
-                  container
-                  spacing={2}
-                  alignItems="center"
-                  sx={{ mt: 2.5 }}
-                >
-                  <Grid item>
-                    <Typography variant="h6" color="text.secondary">
-                      10px
-                    </Typography>
-                  </Grid>
-                  <Grid item xs>
-                    <Slider
-                      size="small"
-                      value={borderRadius}
-                      onChange={handleBorderRadius}
-                      getAriaValueText={valueText}
-                      valueLabelDisplay="on"
-                      aria-labelledby="discrete-slider-small-steps"
-                      marks
-                      step={1}
-                      min={10}
-                      max={24}
-                    />
-                  </Grid>
-                  <Grid item>
-                    <Typography variant="h6" color="text.secondary">
-                      24px
-                    </Typography>
-                  </Grid>
-                </Grid>
-              }
-            />
-          </Grid>
-        </Grid>
 
-        <Grid item xs={12}>
-          <Button onClick={reset_default_setting}>RESET</Button>
-        </Grid>
-      </Grid>
+  const resetDefaultSetting = () => {
+    setTheme(config.mode);
+    setBackground(config.bgColor);
+    setBorderRadius(config.borderRadius);
+  };
+
+  return (
+    <div className="portfolio-page settings-page">
+      <section className="page-intro">
+        <p className="eyebrow">Settings</p>
+        <h1>Theme and surface controls</h1>
+        <p>
+          Personalize the portfolio surface while keeping the redesigned layout
+          clean and recruiter-friendly.
+        </p>
+      </section>
+
+      <section className="settings-grid">
+        <article className="settings-panel">
+          <div className="settings-panel-header">
+            <div>
+              <p className="eyebrow">Theme</p>
+              <h2>{isDark ? "Dark" : "Light"}</h2>
+            </div>
+            <IconButton
+              aria-label={`Switch to ${isDark ? "light" : "dark"} theme`}
+              className="theme-toggle theme-toggle-large"
+              onClick={() => setTheme(isDark ? "light" : "dark")}
+            >
+              {isDark ? <Brightness7Icon /> : <DarkModeIcon />}
+            </IconButton>
+          </div>
+          <div className="segmented-control" role="group" aria-label="Theme">
+            {["dark", "light"].map((mode) => (
+              <button
+                className={customization.mode === mode ? "is-active" : ""}
+                key={mode}
+                onClick={() => setTheme(mode)}
+                type="button"
+              >
+                {mode}
+              </button>
+            ))}
+          </div>
+        </article>
+
+        <article className="settings-panel settings-panel-wide">
+          <div className="settings-panel-header">
+            <div>
+              <p className="eyebrow">Background</p>
+              <h2>{customization.bg}</h2>
+            </div>
+          </div>
+          <div className="background-swatch-grid">
+            {config.bgList.map((bg) => (
+              <button
+                aria-label={`Set ${bg} background`}
+                className={
+                  customization.bg === bg
+                    ? "background-swatch is-active"
+                    : "background-swatch"
+                }
+                key={bg}
+                onClick={() => setBackground(bg)}
+                style={{
+                  background: config.bgMap(customization.mode, bg),
+                }}
+                type="button"
+              >
+                <span>{bg}</span>
+              </button>
+            ))}
+          </div>
+        </article>
+
+        <article className="settings-panel">
+          <div className="settings-panel-header">
+            <div>
+              <p className="eyebrow">Card radius</p>
+              <h2>{customization.borderRadius}px</h2>
+            </div>
+          </div>
+          <Slider
+            aria-label="Card border radius"
+            getAriaValueText={valueText}
+            marks
+            max={24}
+            min={10}
+            onChange={(event, value) => setBorderRadius(value)}
+            size="small"
+            step={1}
+            value={customization.borderRadius}
+            valueLabelDisplay="auto"
+          />
+        </article>
+      </section>
+
+      <div className="settings-actions">
+        <Button
+          onClick={resetDefaultSetting}
+          startIcon={<RestartAltIcon />}
+          variant="contained"
+        >
+          Reset defaults
+        </Button>
+      </div>
     </div>
   );
 }

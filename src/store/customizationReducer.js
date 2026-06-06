@@ -4,15 +4,16 @@ import config from "./../config";
 // action - state management
 import * as actionTypes from "./actions";
 
+const normalizeMode = (mode) => {
+  return mode === "dark" || mode === "light" ? mode : config.mode;
+};
+
 export const initialState = {
   borderRadius:
     localStorage.getItem("borderRadius") === null
       ? config.borderRadius
       : parseInt(localStorage.getItem("borderRadius")),
-  mode:
-    localStorage.getItem("theme") === null
-      ? config.mode
-      : localStorage.getItem("theme"),
+  mode: normalizeMode(localStorage.getItem("theme")),
   bg:
     localStorage.getItem("background") === null
       ? config.bgColor
@@ -31,7 +32,7 @@ const customizationReducer = (state = initialState, action) => {
     case actionTypes.SET_THEME:
       return {
         ...state,
-        mode: action.mode,
+        mode: normalizeMode(action.mode),
       };
     case actionTypes.SET_BG:
       return {

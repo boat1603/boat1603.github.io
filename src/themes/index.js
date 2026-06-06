@@ -15,6 +15,10 @@ import themeTypography from "./typography";
 
 export const theme = (customization) => {
   const color = colors;
+  const paletteMode =
+    customization.mode === "dark" || customization.mode === "light"
+      ? customization.mode
+      : "dark";
 
   const themeOption = {
     colors: color,
@@ -33,7 +37,7 @@ export const theme = (customization) => {
 
   const themeOptions = {
     direction: "ltr",
-    palette: { mode: customization.mode }, //themePalette(themeOption),
+    palette: { mode: paletteMode }, //themePalette(themeOption),
     // palette: themePalette(themeOption),
     mixins: {
       toolbar: {
